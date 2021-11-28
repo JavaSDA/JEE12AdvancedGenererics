@@ -12,7 +12,8 @@ public class IOTest {
 //            System.err.println(inputFile + " was not found");
 //        }
 //        characterStream(inputFile, "outputText.txt");
-        bufferedStreams(inputFile, "outputBufferText.txt");
+//        bufferedStreams(inputFile, "outputBufferText.txt");
+
         System.out.println("Operation Successful");
     }
 
@@ -29,6 +30,7 @@ public class IOTest {
         // `surround with` shortcut: Ctrl + Alt + T
         try {
             while((byteCounter = in.read()) != -1) {
+
                 out.write(byteCounter);
             }
             in.close();
@@ -72,4 +74,6 @@ public class IOTest {
             System.err.println(e.getMessage());
         }
     }
+
+
 }
