@@ -1,10 +1,9 @@
 package com.company.functions;
 
+
+
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 @FunctionalInterface // This annotation tells the compiler and the user that the interface is
     // a Single Abstract Method (SAM) interface.
@@ -49,6 +48,7 @@ public class Functions implements SingleAbstract {
 //                System.out.println(Thread.currentThread().getName());
 //            }
 //        };
+
 
         // If the lambda expression contains only one line, then we can place the expression
         // in a single line. Also, we don't need to add a return keyword if a value is being returned
@@ -123,11 +123,23 @@ public class Functions implements SingleAbstract {
 //        checkNullValue.ifPresent(word -> System.out.println(word.toLowerCase()));
         List<Integer> numbers = Arrays.asList(23, 44, 88, 93, 24);
 
+        // there are two categories of methods that operate on streams.
+        // one operates on the data while it's being streamed and creates
+        // another stream after it's done operating on the data and the
+        // other category operates on the data after data has been processed.
+
+        IntConsumer consumer = number -> {
+            System.out.println("Number: " + number);
+        };
+
         System.out.println(numbers.stream()
                 .filter(number -> number % 2 == 0)
                 .mapToInt(value -> value * 2)
-                .sum()
-        );
+                .reduce((currentValue, reduceBy) -> currentValue + reduceBy).getAsInt());
+
+//                .forEach(num -> System.out.println(num));
+//                .forEach(System.out::println);
+//                .forEach(consumer);
 
     }
 
